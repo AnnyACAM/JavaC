@@ -3,24 +3,32 @@ public class Funcionario{
     String nome = " ";
     String departamento = " ";
     double salario = 0.00;
-    String data_in_banco= " ";
+    String dataEntrada= " ";
+    int dataDeEntrada[] = new int[3];
     String RG = " ";
+    
+    //Etapa 1
+    String mostra(){
+        String info;
+            info = "Nome: " + this.nome;
+			info += "\nDepartamento: " + this.departamento;
+			info += "\nSalário: " + this.salario;
+			info += "\nData de Entrada no Banco: R$" + this.dataEntrada;
+			info += "\nRG: " + this.RG;
+			return info;
+    }
 
-    public static void main(String args[]){
-    //Cria objeto
-    Funcionario Funcionario1;
-    Funcionario1 = new Funcionario();
+    //Etapa 3
+    String Mostra(){
+        String info;
+            info = "Nome: " + this.nome;
+			info += "\nDepartamento: " + this.departamento;
+			info += "\nSalário: " + this.salario;
+            
+			info += "\nData de Entrada no Banco:" + this.dataDeEntrada[0] + "/" + this.dataDeEntrada[1] + "/" + this.dataDeEntrada[2];
+			info += "\nRG: " + this.RG;
+			return info;
+    }
+    
 
-    Funcionario1.nome = "Renata";
-    Funcionario1.departamento = "Administrativo";
-    Funcionario1.salario = 3000;
-    Funcionario1.data_in_banco = "10/10/2022";
-    Funcionario1.RG = "MG-12.345.678";
-
-    System.out.println(Funcionario1.nome);
-    System.out.println(Funcionario1.departamento);
-    System.out.println(Funcionario1.salario);
-    System.out.println(Funcionario1.data_in_banco);
-    System.out.println(Funcionario1.RG);
-}
 }
