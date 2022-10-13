@@ -15,6 +15,6 @@ public class Etapa1{
     Funcionario1.RG = "MG-12.345.678";
 
     System.out.println(Funcionario1.mostra());
-    
+    //
 }
 }
