@@ -9,8 +9,8 @@ public class Funcionario{
     
     //Etapa 1
     String mostra(){
-        String info;
-            info = "Nome: " + this.nome;
+        String info;info = "Nome: " + this.nome;
+            
 			info += "\nDepartamento: " + this.departamento;
 			info += "\nSalário: " + this.salario;
 			info += "\nData de Entrada no Banco: R$" + this.dataEntrada;
@@ -29,6 +29,4 @@ public class Funcionario{
 			info += "\nRG: " + this.RG;
 			return info;
     }
-    
-
 }

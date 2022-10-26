@@ -7,8 +7,10 @@ public class Empresa{
         private int nFuncionarios = 0;
 
         public void adiciona(Funcionario f){
-            if(nFuncionarios+1 > empregados.length){
-                empregados = Arrays.copyOf(empregados, nFuncionarios+1);
+            if(nFuncionarios == empregados.length){
+                Funcionario empregadosReserva[] = new Funcionario[15];
+                System.arraycopy(empregados, 0, empregadosReserva, 0, empregados.length);
+                empregados = empregadosReserva;
             }
             empregados[nFuncionarios] = f;
             nFuncionarios++;
@@ -18,9 +20,8 @@ public class Empresa{
             String info;
             info = "Nome: " + this.nome;
             info += "\nCNPJ: " + this.cnpj;
-            info += "\n Número Funcionario:" + this.nFuncionarios;
-
+            info += "\nNúmero Funcionario:" + this.nFuncionarios;
             return info;
         }
-        
+
 }

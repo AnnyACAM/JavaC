@@ -37,7 +37,8 @@ public class Etapa3{
     
     System.out.print("\n\n");
 
-    System.out.println(Funcionario4.Mostra());
+    System.out.println(Funcionario4.mostra());
+
     input.close();
 }
 }
