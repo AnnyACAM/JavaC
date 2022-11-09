@@ -19,6 +19,7 @@ class Instapet{
         int indc_ux = 0;
         int quantd = 0;
         indc_ux = email_indice(email);
+        if(indc_ux > 0){
         for(int i = 0; i < users[indc_ux].getImagem().length; i++){
         if (users[indc_ux].getImagem()[i] == null){
             quantd++;
@@ -27,16 +28,20 @@ class Instapet{
         quantd = users[indc_ux].getImagem().length - quantd;
         return quantd;
     }
+    return -1;
+    }
     
 
-    int qnt_usuarios(){
+    public int qnt_usuarios(){
         int quantd = 0;
         for(int i = 0; i < users.length; i++){
-        if (users[i] == null){
-            quantd++;
+        
+            if (users[i] == null){
+                quantd++;
+            }
         }
-    }
-    quantd = users.length - quantd;
+        
+        quantd = users.length - quantd;
         return quantd;
     }
 
@@ -49,7 +54,6 @@ class Instapet{
 
     void mostra_pets(Fotos u[], int tam){
         for (int i = 0; i < tam; i++){
-            System.out.print("\nFoto  " +i);
             System.out.print("\nDescricao:");
             System.out.println(u[i].getDescricao());
             System.out.print("Link:");
@@ -63,7 +67,6 @@ class Instapet{
 
     void mostra_usuarios(Usuario us[], int tam){
         for (int i = 0; i < tam; i++){
-            System.out.print("\nUsuario  " +i);
             System.out.print("\nEmail:");
             System.out.println(us[i].getEmail());
             System.out.print("Nome:");
@@ -77,15 +80,24 @@ class Instapet{
         users[indc_ux].altera_descricao(n, desc);
     }
 
-    int email_indice(String email){
+    public int email_indice(String email){
         int indice = 0;
-        int qnt_ux = 0;
-        qnt_ux = qnt_usuarios();
-        for(int i = 0; i < qnt_ux; i++)
-        if (email == users[i].getEmail()){
+        
+        for(int i = 0; i < this.qnt_usuarios(); i++){
+        if (email.equals(users[i].getEmail())){
             indice = i;
             return indice;
+         } 
         }
-        return 1000;
+        return -1;
     }
+
+    int existeEmail(String email){
+        for(int i = 0; i < this.qnt_usuarios(); i++)
+            if (email.equals(users[i].getEmail())){
+                return 1;
+             } 
+             return 0;
+    }
+   
 }

@@ -1,73 +1,146 @@
+import java.util.Scanner;
+
 class Main{
 
     public static void main(String args[]){
+        Scanner scanf = new Scanner(System.in);
     //Observações: vetores de usuário e fotos possuem 3 de tamanho
 
         //Inicializando classe instapet
         Instapet insta = new Instapet();
-        
-        //Cadastrando Usuarios
-        //Usuário[1]
-        insta.cadastra_usuario("Anny Caroline", "2021951302@teiacoltec.org");
-        //Fotos dos Pet
-        insta.cadastra_foto("pet1.com.br", "2021951302@teiacoltec.org", "Luna");
-        insta.cadastra_foto("pet2.com.br", "2021951302@teiacoltec.org", "Afrodite");
-        insta.cadastra_foto("pet3.com.br", "2021951302@teiacoltec.org", "Atma");
-
-        //Usuário[2]
-        insta.cadastra_usuario("Virginia Fonseca", "vivi@teiacoltec.org");
-        //Fotos dos Pet
-        insta.cadastra_foto("pet_java.com.br", "vivi@teiacoltec.org", "Java");
-        insta.cadastra_foto("pet_csharp.com.br", "vivi@teiacoltec.org", "C SharP");
-        insta.cadastra_foto("pet_sql.com.br", "vivi@teiacoltec.org", "SQL");
-
-        //Usuário[2]
-        insta.cadastra_usuario("João Pessoa", "jp@teiacoltec.org");
-        //Fotos dos Pet
-        insta.cadastra_foto("pet_pra.com.br", "jp@teiacoltec.org", "Praia");
-        insta.cadastra_foto("pet_Prb.com.br", "jp@teiacoltec.org", "Paraiba");
-        insta.cadastra_foto("pet_ptri.com.br", "jp@teiacoltec.org", "Patrimonio");
 
         //Quantidade de Usuário "logados"
-        int qnt_ux = 0;
-        qnt_ux = insta.qnt_usuarios();
+            
+        int opc = 1;
+   
 
-        //Objeto Usuarios
-        Usuario auxx[] = new Usuario[qnt_ux];
-        for(int i = 0; i < qnt_ux; i++)
-            auxx[i] = new Usuario();
-
+        while(opc > 0 && opc <8){
         
-        //Lista Usuarios
-        auxx = insta.listar_usuarios();
-        //Imprime Usuarios
-        insta.mostra_usuarios(auxx, qnt_ux);
-        
+        System.out.println("1 - Adicionar Usuario\n2 - Adicionar Pet\n3 - Listar usuarios \n4 - Listar Pets\n5 - Quantidade Pets\n6 - Quantidade Usuarios\n7- Mudar descricao");
+        opc = scanf.nextInt();
+        if(opc == 1)
+        {
+            String email;
+            String nome;
+            System.out.println("\n> ADICIONAR USUARIO");
+            System.out.print("email:");
+            email = scanf.next();
+            if(insta.existeEmail(email) == 0){
+            System.out.print("nome:");
+            nome = scanf.next();
+            insta.cadastra_usuario(nome, email);
+            }
+            else{
+                System.out.println("Email já cadastrado");
+            }
+        }
 
-        
-        //Mostrando Dados
-        //Usuário [1]
-        //Quantidade de fotos usuário [1]
-        int qnt_img = 0;
-        qnt_img = insta.qnt_pets("2021951302@teiacoltec.org");
+        if(opc == 2)
+        {
+            String email;
+            String link;
+            String descr;
+            System.out.println("\n> ADICIONAR PETS");
+            System.out.print("email:");
+            email = scanf.next();
+            System.out.print("link:");
+            link = scanf.next();
+            System.out.print("desc:");
+            descr = scanf.next();
 
-        //Cria novo objeto para fotos
-        Fotos aux[] = new Fotos[qnt_img];
-        for(int i = 0; i < qnt_img; i++)
-            aux[i] = new Fotos();
+            insta.cadastra_foto(link, email, descr);
+        }
 
-        //Lista Fotos
-        aux = insta.listar_pets("2021951302@teiacoltec.org");
-        //Imprime Fotos
-        System.out.println("\n\nUsuario[1] " +insta.users[0].getNome());
-        insta.mostra_pets(aux, qnt_img);
+        if(opc == 3)
+        { 
+            //Objeto Usuarios
+            Usuario aux[] = new Usuario[insta.qnt_usuarios()];
+            for(int i = 0; i < insta.qnt_usuarios(); i++)
+                aux[i] = new Usuario();
 
-        insta.altera_descricao(0, "2021951302@teiacoltec.org", "Nova Descricao");
-        insta.altera_descricao(1, "2021951302@teiacoltec.org", "Nova Descricao");
-        insta.altera_descricao(2, "2021951302@teiacoltec.org", "Nova Descricao");
+            //Lista Usuarios
+            System.out.println("\n> LISTAR USUARIOS");
+            aux = insta.listar_usuarios();
+            insta.mostra_usuarios(aux, insta.qnt_usuarios());
 
-        System.out.println("\n\nUsuario[1] " +insta.users[0].getNome());
-        insta.mostra_pets(aux, qnt_img);
+        }
 
+        if(opc == 4)
+        {
+            String email=" ";
+            int qnt_img = 0;
+            
+            System.out.println("\n> LISTAR PETS");
+            System.out.print("email:");
+            email = scanf.next();
+            qnt_img = insta.qnt_pets(email);
+            if(insta.existeEmail(email) == 1){
+  
+                    //Cria novo objeto auxiliar para fotos
+                    Fotos aux[] = new Fotos[qnt_img];
+                    for(int i = 0; i < qnt_img; i++)
+                        aux[i] = new Fotos();
+
+                    System.out.println("Usuario " +email);
+                    //Lista Fotos
+                    aux = insta.listar_pets(email);
+                    //Imprime Fotos
+                    insta.mostra_pets(aux, qnt_img);
+                
+            }
+            else { 
+                System.out.println("Email não cadastrado");
+            }
+        }
+
+        if(opc == 5)
+        {
+            String email=" ";
+            int qnt_img = 0;
+            
+            System.out.println("\n> QUANTIDADE PETS");
+            System.out.print("email:");
+            email = scanf.next();
+            if(insta.existeEmail(email) == 1)
+            {
+                qnt_img = insta.qnt_pets(email);
+
+                System.out.println(+qnt_img);
+            }
+            else {
+                 System.out.println("Email não cadastrado");
+            }
+        }
+
+        if(opc == 6)
+        {
+            System.out.println("\n> QUANTIDADE USUARIOS");
+            System.out.println(insta.qnt_usuarios());
+        }
+
+        if(opc == 7)
+        {
+            String email;
+            String descr;
+            int i;
+            System.out.println("\n> ALTERA DESCRICAO");
+            System.out.print("email:");
+            email = scanf.next();
+            if(insta.existeEmail(email) == 1)
+            {
+                System.out.print("->");
+                descr = scanf.next();
+
+                i = insta.email_indice(email);
+
+                insta.altera_descricao(i, email, descr);
+            }
+            else {
+                System.out.println("Email não cadastrado");
+            }
+        }
+    }
+
+       scanf.close();
     }
 }
