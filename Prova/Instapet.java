@@ -19,7 +19,7 @@ class Instapet{
         int indc_ux = 0;
         int quantd = 0;
         indc_ux = email_indice(email);
-        if(indc_ux > 0){
+        if(indc_ux > -1){
         for(int i = 0; i < users[indc_ux].getImagem().length; i++){
         if (users[indc_ux].getImagem()[i] == null){
             quantd++;
@@ -58,6 +58,8 @@ class Instapet{
             System.out.println(u[i].getDescricao());
             System.out.print("Link:");
             System.out.println(u[i].getUrl());
+            System.out.print("Indice Foto:");
+            System.out.println(i);
         }
     }
 
@@ -83,12 +85,11 @@ class Instapet{
     public int email_indice(String email){
         int indice = 0;
         
-        for(int i = 0; i < this.qnt_usuarios(); i++){
+        for(int i = 0; i < this.qnt_usuarios(); i++)
         if (email.equals(users[i].getEmail())){
             indice = i;
             return indice;
          } 
-        }
         return -1;
     }
 
@@ -100,4 +101,5 @@ class Instapet{
              return 0;
     }
    
+    
 }
