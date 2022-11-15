@@ -6,16 +6,18 @@ public class Principal{
         AB.nome = "Ab";
         AB.cnpj = "12345678";
         AB.empregados[0] = new Funcionario();
+        AB.empregados[0].nome = "Nana";
+        AB.empregados[0].departamento = "Executivo";
+        AB.empregados[0].salario = 1200;
+        AB.empregados[0].dataEntrada = "03/10/2015";
+        AB.empregados[0].RG = "MG-alguma.coisa";
         AB.adiciona(AB.empregados[0]);
-        AB.empregados[0].nome = "AA0";
 
-        AB.empregados[1] = new Funcionario();
-        AB.adiciona(AB.empregados[1]);
-        AB.empregados[1].nome = "BB";
-
+        int quantd = 0;
+        quantd = AB.qnt_funcionarios();
         System.out.println(AB.imprime());
-        for(int x = 0; x < AB.empregados.length; x++){
-            System.out.println(AB.empregados[x].Mostra());
+        for(int i = 0; i < quantd; i++){
+            System.out.println(AB.empregados[i].mostra());
         }
 
     }
