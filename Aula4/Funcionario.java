@@ -7,7 +7,7 @@ public class Funcionario{
     int dataDeEntrada[] = new int[3];
     String RG = " ";
     
-    // Etapa 1
+    //Etapa 1
     String mostra(){
         String info;info = "Nome: " + this.nome;
             
