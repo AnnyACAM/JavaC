@@ -1,5 +1,4 @@
-package Aula9.Tributos;
-public abstract class Conta extends SeguroDeVida {
+public class Conta{
     protected double saldo;
 
     // Get
@@ -25,6 +24,7 @@ public abstract class Conta extends SeguroDeVida {
     }
 
     //Atualiza
-    public abstract void atualiza (double taxa);
-
+    public void atualiza ( double taxa ) {
+    this . saldo += this . saldo * taxa ;
+   }
 }

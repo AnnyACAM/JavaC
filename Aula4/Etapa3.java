@@ -24,7 +24,7 @@ public class Etapa3{
      System.out.println("RG:");
      Funcionario4.RG = input.next();
      System.out.println("Data de Entrada:");
-     int dia, mes, ano;
+     /*int dia, mes, ano;
      System.out.print("Dia: ");
      dia = input.nextInt();
      Funcionario4.dataDeEntrada[0] = dia;
@@ -35,7 +35,7 @@ public class Etapa3{
      ano = input.nextInt();
      Funcionario4.dataDeEntrada[2] = ano;
     
-    System.out.print("\n\n");
+    System.out.print("\n\n");*/
 
     System.out.println(Funcionario4.mostra());
 

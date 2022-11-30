@@ -4,6 +4,7 @@ class Instapet{
     void cadastra_usuario(String nome, String email){
         int qnt_ux = 0;
         qnt_ux = qnt_usuarios();
+        
         users[qnt_ux] = new Usuario();
         users[qnt_ux].setNome(nome);
         users[qnt_ux].setEmail(email);
@@ -68,6 +69,7 @@ class Instapet{
     }
 
     void mostra_usuarios(Usuario us[], int tam){
+
         for (int i = 0; i < tam; i++){
             System.out.print("\nEmail:");
             System.out.println(us[i].getEmail());
@@ -85,11 +87,12 @@ class Instapet{
     public int email_indice(String email){
         int indice = 0;
         
-        for(int i = 0; i < this.qnt_usuarios(); i++)
-        if (email.equals(users[i].getEmail())){
-            indice = i;
-            return indice;
-         } 
+        for(int i = 0; i < this.qnt_usuarios(); i++){
+            if (email.equals(users[i].getEmail())){ 
+                indice = i;
+                return indice;
+            } 
+        }
         return -1;
     }
 

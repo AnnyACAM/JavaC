@@ -1,5 +1,6 @@
-package Aula9.Tributos;
-public abstract class Conta extends SeguroDeVida {
+package Aula8.parteI.c_abstrat;
+
+public abstract class Conta{
     protected double saldo;
 
     // Get
@@ -14,7 +15,7 @@ public abstract class Conta extends SeguroDeVida {
 
     //Saca
     public void setSaca(Double valor){
-      if (valor < this.saldo){
+      if (this.saldo < valor){
        this.saldo -= valor;
       }
     }
@@ -26,5 +27,4 @@ public abstract class Conta extends SeguroDeVida {
 
     //Atualiza
     public abstract void atualiza (double taxa);
-
 }

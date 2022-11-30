@@ -1,3 +1,4 @@
+package Aula9.Tributos;
 abstract class SeguroDeVida implements Tributavel{
     private static final int taxa = 42;
     
